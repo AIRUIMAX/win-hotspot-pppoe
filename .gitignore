@@ -1,0 +1,14 @@
+# 本机桌面快捷方式（含本机绝对路径，无通用价值）
+*.lnk
+
+# WorkBuddy 工作区数据
+.workbuddy/
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# 编辑器
+.vscode/
+.idea/
+*.swp

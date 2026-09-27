@@ -4,6 +4,9 @@
 # WorkBuddy 工作区数据
 .workbuddy/
 
+# 构建产物（Release 附件只挂在 GitHub Release 上，不进仓库）
+dist/
+
 # Windows
 Thumbs.db
 desktop.ini

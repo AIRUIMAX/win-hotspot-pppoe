@@ -1,8 +1,21 @@
 # Windows 移动热点 · 一键强开
 
+[![Release](https://img.shields.io/github/v/release/AIRUIMAX/win-hotspot-pppoe?label=release&color=red)](https://github.com/AIRUIMAX/win-hotspot-pppoe/releases/latest)
+[![License](https://img.shields.io/github/license/AIRUIMAX/win-hotspot-pppoe)](LICENSE)
+
 解决 **PPPoE「宽带连接」拨号上网时，Windows 设置里的「移动热点」开关永久置灰** 的问题。
 
 跑一遍脚本，手机就能连上电脑热点正常上网。已在 Windows 11 实测跑通。
+
+## 下载
+
+直接拿打包好的压缩包最省事 —— [**下载最新版**](https://github.com/AIRUIMAX/win-hotspot-pppoe/releases/latest)
+
+| 方式 | 说明 |
+|------|------|
+| `win-hotspot-pppoe-v*.zip`（Release 附件） | **推荐**。解压即得 `start-hotspot.ps1` + `开启热点.cmd` |
+| Source code (zip / tar.gz) | 完整源码归档，另含 README 与 LICENSE |
+| `git clone` | 想改脚本、提 PR 就用这个 |
 
 ---
 
@@ -30,7 +43,8 @@
 
 **要求**：Windows 10 / 11 + **Windows PowerShell 5.1**（不要用 PowerShell 7）+ 管理员权限。
 
-1. 把 `start-hotspot.ps1` 和 `开启热点.cmd` 放在**同一个文件夹**里。
+1. 从 [Releases](https://github.com/AIRUIMAX/win-hotspot-pppoe/releases/latest) 下载 `win-hotspot-pppoe-v*.zip` 并解压。
+   把 `start-hotspot.ps1` 和 `开启热点.cmd` **放在同一个文件夹**里（启动器靠相对路径找主脚本）。
 2. 右键 `开启热点.cmd` → **以管理员身份运行**。
    （直接双击也行，`cmd` 会自动弹 UAC 提权。）
 3. 按提示看输出，最后按回车退出。
@@ -79,7 +93,16 @@
 |------|------|
 | `start-hotspot.ps1` | 主脚本，全部逻辑都在这里 |
 | `开启热点.cmd` | 启动器，负责自动提权 + 用 PowerShell 5.1 调用主脚本 |
+| `tools/pack_release.py` | 打包 Release 附件：`python tools/pack_release.py 1.0.0` → `dist/win-hotspot-pppoe-v1.0.0.zip` |
 | `开启热点.cmd.lnk` | 本机桌面快捷方式，**未纳入仓库**（含本机绝对路径，无通用价值） |
+
+## 发布新版本
+
+```bash
+python tools/pack_release.py 1.1.0
+gh release create v1.1.0 dist/win-hotspot-pppoe-v1.1.0.zip \
+  --target main --title "v1.1.0 · 简述" --notes-file dist/RELEASE_NOTES_v1.1.0.md --latest
+```
 
 ## 免责声明
 
